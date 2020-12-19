@@ -14,18 +14,25 @@ The dataset using include:
 ## Data Processing
 ### Members table
 Members information have 2 feature columns:
+
 Sex with Male, Female and Null value. All will be One-Hot encoded for each MemberID.
+
 Age at first claim with categories value type from '0-9' age range to '69-79' age and '80+' age. These values will be converted to integer mean average, for example, '10-19' will be replaced with 15.
 
 ### Claims table
 Claims processing step will only use Y1 data for training and Y2 for testing. Each will convert features from claims level to member level following rules:
+
 - ID data like Provider, Vendor and PCP will only sum the unique ID values of each MemberID.
+
 - Numeric data like PayDelay will convert to integer and sum for each MemberID.
+
 - Other Categorical data will One-Hot with value_counts based on MemberID.
 
 ### DrugCount and LabCount table
 DrugCount is count of unique prescription drugs filled and top-coded at 7.
+
 LabCount is count of unique laboratory and pathology tests and top-coded at 10.
+
 Both are numeric data and will be converted to integer and sum for each MemberID in each Year.
 
 ### Dropped data
